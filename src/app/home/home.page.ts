@@ -6,15 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  post: {
+  posts: {
     userName: string;
     message: string;
     createdDate: any;
-  } = {
-    userName: 'Taro Yamada',
-    message: 'これはテキストメッセージです',
-    createdDate: '10分前'
-  };
+  }[] = [
+    {
+      userName: 'Taro Yamada',
+      message: 'これはテキストメッセージです',
+      createdDate: '10分前'
+    },
+    {
+      userName: 'Jiro Suzuki',
+      message: 'ふたつめのテキストメッセージ',
+      createdDate: '5分前'
+    }
+  ];
 
   constructor() {}
 }
