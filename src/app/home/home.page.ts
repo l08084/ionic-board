@@ -6,6 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
+  post: {
+    userName: string;
+    message: string;
+    createdDate: any;
+  };
+
+  message: string;
+
   posts: {
     userName: string;
     message: string;
@@ -24,4 +32,16 @@ export class HomePage {
   ];
 
   constructor() {}
+
+  addPost() {
+    // 入力されたメッセージを使って、投稿データを作成
+    this.post = {
+      userName: 'Akira Yanagihara',
+      message: this.message,
+      createdDate: '数秒前'
+    };
+
+    this.posts.push(this.post);
+    this.message = '';
+  }
 }
