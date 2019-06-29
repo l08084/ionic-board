@@ -19,7 +19,7 @@
   </form>
 
   <!-- この中が投稿されたメッセージを表示する部分です -->
-  <ion-card class="singlePost" *ngFor="let post of posts">
+  <ion-card class="singlePost" *ngFor="let post of posts; let i = index">
     <ion-item>
       <h2 padding-vertical>{{post.userName}}</h2>
     </ion-item>
@@ -27,19 +27,19 @@
       <div margin-bottom>{{post.message}}</div>
       <ion-row>
         <ion-col size="6" size-sm>
-          <ion-button fuill="clear" size="small">
+          <ion-button fill="clear" size="small">
             <ion-icon name="text"></ion-icon>
             <div>コメント</div>
           </ion-button>
         </ion-col>
         <ion-col size="6" size-sm>
-          <ion-button fuill="clear" size="small">
+          <ion-button fill="clear" size="small" (click)="presentPrompt(i)">
             <ion-icon name="create"></ion-icon>
             <div>編集</div>
           </ion-button>
         </ion-col>
         <ion-col size="6" size-sm>
-          <ion-button fuill="clear" size="small">
+          <ion-button fill="clear" size="small">
             <ion-icon name="trash"></ion-icon>
             <div>削除</div>
           </ion-button>
