@@ -15,12 +15,19 @@
   <form #f="ngForm" class="loginForm">
     <ion-item class="formItem">
       <ion-label position="floating">
-        <ion-icon name="email">
-          メールアドレス
+        <ion-icon name="mail">
         </ion-icon>
+        メールアドレス
       </ion-label>
       <ion-input required email [(ngModel)]="login.email" type="email" name="login.email">
       </ion-input>
+    </ion-item>
+    <ion-item class="formItem">
+      <ion-label position="floating">
+        <ion-icon name="key" padding-light>
+        </ion-icon>
+        パスワード
+      </ion-label>
       <ion-input required [(ngModel)]="login.password" type="password" name="login.password">
       </ion-input>
     </ion-item>
