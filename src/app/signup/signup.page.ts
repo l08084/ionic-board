@@ -30,13 +30,16 @@ export class SignupPage implements OnInit {
   signUp() {
     this.afAuth.auth
       .createUserWithEmailAndPassword(this.signup.email, this.signup.password)
+      // ユーザー登録が成功したら then の中が実行される
       .then(created => {
         const newUser = created.user;
         newUser
+          // 作成したユーザーに対して displaName を設定する
           .updateProfile({
-            displayName: this.signUp.name,
+            displayName: this.signup.name,
             photoURL: ''
           })
+          // displayName の設定が完了したら
           .then(async () => {
             const toast = await this.toastCtrl.create({
               message: `${created.user.displayName}さんを登録しました`,
@@ -51,6 +54,14 @@ export class SignupPage implements OnInit {
             });
             await toast.present();
           });
+        this.goBack();
+      })
+      .catch(async error => {
+        const toast = await this.toastCtrl.create({
+          message: error.toString(),
+          duration: 3000
+        });
+        await toast.present();
       });
   }
 
