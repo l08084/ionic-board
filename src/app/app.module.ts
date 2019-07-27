@@ -16,6 +16,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // Firebaseを利用するためのモジュール
 import { environment } from '../environments/environment';
 
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -25,7 +27,8 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     AngularFireModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,
