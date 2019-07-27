@@ -75,6 +75,11 @@ export class HomePage implements OnInit {
     this.postsCollection = this.afStore.collection('posts', ref =>
       ref.orderBy('created', 'desc')
     );
+
+    // データに変更があったらそれを受け取ってpostsに入れる
+    this.postsCollection.valueChanges().subscribe(data => {
+      this.posts = data;
+    });
   }
 
   async presentPrompt(post: Post) {
