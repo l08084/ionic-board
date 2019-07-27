@@ -8,6 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 
 import { Post } from '../models/post';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -137,6 +138,12 @@ export class HomePage implements OnInit {
           duration: 3000
         });
       });
+  }
+
+  // 投稿日時と現在日時の差を返す
+  differenceTime(time: Date): string {
+    moment.locale('ja');
+    return moment(time).fromNow();
   }
 
   /**
