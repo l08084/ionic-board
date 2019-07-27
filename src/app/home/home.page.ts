@@ -8,6 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 
 import { Post } from '../models/post';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 
 @Component({
@@ -27,7 +28,8 @@ export class HomePage implements OnInit {
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
     private afStore: AngularFirestore,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private router: Router
   ) {}
 
   ngOnInit() {
