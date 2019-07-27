@@ -33,6 +33,7 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.afStore.firestore.enableNetwork();
     // コンポーネントの初期化時に、投稿を読み込むgetPosts()を実行
     this.getPosts();
   }
@@ -146,6 +147,28 @@ export class HomePage implements OnInit {
   differenceTime(time: Date): string {
     moment.locale('ja');
     return moment(time).fromNow();
+  }
+
+  // ログアウト
+  logout() {
+    this.afStore.firestore.disableNetwork();
+    this.afAuth.auth
+      .signOut()
+      .then(async () => {
+        const toast = await this.toastCtrl.create({
+          message: 'ログアウトしました',
+          duration: 3000
+        });
+        await toast.present();
+        this.router.navigateByUrl('/login');
+      })
+      .catch(async error => {
+        const toast = await this.toastCtrl.create({
+          message: error.toString(),
+          duration: 3000
+        });
+        await toast.present();
+      });
   }
 
   /**
